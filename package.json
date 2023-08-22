@@ -1,0 +1,20 @@
+{
+    "name": "texman",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "nodemon server.js -e ejs,js,css"
+    },
+    "dependencies": {
+        "ejs": "^3.1.9",
+        "express": "~4.16.1"
+    },
+    "devDependencies": {
+        "eslint": "^8.47.0",
+        "eslint-config-prettier": "^9.0.0",
+        "nodemon": "^3.0.1",
+        "prettier": "^3.0.2",
+        "reload": "^3.2.1",
+        "sass": "^1.66.1"
+    }
+}
