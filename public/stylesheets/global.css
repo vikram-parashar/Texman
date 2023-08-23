@@ -1,18 +1,50 @@
 @import 'https://www.nerdfonts.com/assets/css/webfont.css';
+
+:root {
+    --background: #000;
+    --foreground: #00fedf;
+    --text: #fff;
+    --subtle: #008a7a;
+}
+::placeholder {
+    color: var(--text);
+}
+
 body {
     all: unset;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+        sans-serif;
+    color: var(--text);
 }
-main {
-    padding: 0 1rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--foreground);
 }
 button,
 textarea {
     background: none;
     border: none;
+    color: var(--text);
     resize: none;
 }
+button {
+    background-color: var(--background);
+    border-radius: 5px;
+    border: 2px solid var(--foreground);
+}
+a {
+    text-decoration: none;
+    color: var(--text);
+}
+
 a:hover {
     cursor: pointer;
+    color: var(--foreground);
 }
 
 #background {
@@ -21,48 +53,99 @@ a:hover {
     left: 0;
     height: 100vh;
     width: 100vw;
-    background-color: #fffdd0;
-    z-index: -100;
+    background-image: radial-gradient(
+        circle at 30vw 70vh,
+        #28235c,
+        #040912,
+        #0c0b1e
+    );
+    z-index: -1;
+}
+#background img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    filter: grayscale() opacity(0.1);
 }
 
+#back-to-top {
+    font-size: 8px;
+    position: fixed;
+    background-color: var(--background);
+    border-radius: 50%;
+    border: 2px solid var(--foreground);
+    padding: 0.5rem 0.5rem 0.6rem 0.5rem;
+    bottom: 2rem;
+    right: 2rem;
+}
+#back-to-top:hover {
+    color: var(--background);
+    background-color: var(--foreground);
+    border: none;
+}
+
+main {
+    padding: 0 2rem;
+}
 #nav-bar {
-    height: 50px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    border-bottom: 1px solid #000;
-    position: sticky;
+    border-bottom: 1px solid var(--subtle);
     top: 0;
-    background-color: #fffdd0;
     margin-bottom: 1rem;
 }
 #nav-logo {
     height: 13px;
 }
 #search-bar {
+    width: 40%;
     display: inline;
-    margin-left: 20px;
-    padding: 2px 5px;
-    border: 2px solid #000;
+    margin: 0 20px;
+    padding: 3px 9px;
+    border: 2px solid var(--subtle);
     border-radius: 20px;
 }
+#search-bar i {
+    font-size: 0.8rem;
+    position: relative;
+    top: -3px;
+    left: 2px;
+}
+#search-bar textarea {
+    width: 80%;
+}
+
 #nav-link {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0 20px;
 }
-#nav-link a:hover {
-    color: #d00;
-}
 #nav-toggle {
     display: none;
-    z-index: 2;
 }
+/* Mobile */
 @media only screen and (max-width: 600px) {
+    main {
+        padding: 0 1rem;
+    }
+    #search-bar {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        width: 50%;
+        left: 25%;
+    }
     #nav-link {
         display: none;
-        background-color: #e9e6c2;
+        background-image: radial-gradient(
+            circle at 30vw 70vh,
+            #28235c,
+            #040912,
+            #0c0b1e
+        );
         position: fixed;
         top: 0;
         left: 0;
@@ -72,7 +155,17 @@ a:hover {
         justify-content: space-evenly;
         align-items: center;
     }
+    #nav-link a {
+        font-size: 24px;
+    }
+
     #nav-toggle {
         display: block;
+        border: none;
+        background: none;
+        z-index: 2;
+        position: fixed;
+        right: 20px;
+        top: 23px;
     }
 }
