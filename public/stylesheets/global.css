@@ -15,7 +15,16 @@ body {
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
         sans-serif;
+
     color: var(--text);
+    background-image: radial-gradient(
+        circle at 30vw 70vh,
+        #28235c,
+        #040912,
+        #0c0b1e
+    );
+    background-size: 100vw 100vh;
+    background-repeat: repeat-y;
 }
 h1,
 h2,
@@ -25,12 +34,22 @@ h5,
 h6 {
     color: var(--foreground);
 }
-button,
+button {
+    background: none;
+    color: var(--text);
+}
 textarea {
     background: none;
-    border: none;
     color: var(--text);
-    resize: none;
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    resize: none; /*remove the resize handle on the bottom right*/
 }
 button {
     background-color: var(--background);
@@ -47,28 +66,8 @@ a:hover {
     color: var(--foreground);
 }
 
-#background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    background-image: radial-gradient(
-        circle at 30vw 70vh,
-        #28235c,
-        #040912,
-        #0c0b1e
-    );
-    z-index: -1;
-}
-#background img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    filter: grayscale() opacity(0.1);
-}
-
 #back-to-top {
+    display: none;
     font-size: 8px;
     position: fixed;
     background-color: var(--background);
@@ -84,26 +83,24 @@ a:hover {
     border: none;
 }
 
-main {
-    padding: 0 2rem;
-}
 #nav-bar {
     height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    border-bottom: 1px solid var(--subtle);
+    position: sticky;
     top: 0;
     margin-bottom: 1rem;
+    padding: 0 50px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(12, 1fr);
+    border-bottom: 1px solid var(--subtle);
 }
 #nav-logo {
     height: 13px;
 }
 #search-bar {
-    width: 40%;
-    display: inline;
-    margin: 0 20px;
+    grid-column: 2/7;
+    width: 250px;
+    margin-left: 15px;
     padding: 3px 9px;
     border: 2px solid var(--subtle);
     border-radius: 20px;
@@ -119,38 +116,72 @@ main {
 }
 
 #nav-link {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0 20px;
+    grid-column: 8/-1;
+    display: flex;
+    justify-content: space-between;
 }
 #nav-toggle {
     display: none;
 }
-/* Mobile */
-@media only screen and (max-width: 600px) {
+
+main {
+    margin: 0 50px;
+}
+
+/* Tablet */
+@media only screen and (max-width: 768px) and (min-width: 480px) {
+    #nav-bar {
+        padding-top: 10px;
+        height: 100px;
+    }
+    #search-bar {
+        margin: 0 auto;
+        grid-column: 1/-1;
+        grid-row-start: 2;
+        width: 70%;
+    }
+    #nav-bar #nav-link {
+        grid-column: 5/-1;
+    }
     main {
-        padding: 0 1rem;
+        margin: 0 35px;
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 480px) {
+    #nav-bar {
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
     }
     #search-bar {
         display: none;
-        position: fixed;
         z-index: 1;
-        width: 50%;
-        left: 25%;
+        position: fixed;
+        left: 0;
+        width: 50vw;
+    }
+    #nav-toggle {
+        display: block;
+        border: none;
+        background: none;
+        z-index: 2;
     }
     #nav-link {
         display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        padding-top: 50px;
         background-image: radial-gradient(
             circle at 30vw 70vh,
             #28235c,
             #040912,
             #0c0b1e
         );
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
@@ -158,14 +189,7 @@ main {
     #nav-link a {
         font-size: 24px;
     }
-
-    #nav-toggle {
-        display: block;
-        border: none;
-        background: none;
-        z-index: 2;
-        position: fixed;
-        right: 20px;
-        top: 23px;
+    main {
+        margin: 0 20px;
     }
 }

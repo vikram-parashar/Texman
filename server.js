@@ -1,6 +1,7 @@
 const express = require('express')
-const app = express()
 const reload = require('reload')
+
+const app = express()
 
 app.set('app engine', 'ejs')
 app.use(express.static('public'))

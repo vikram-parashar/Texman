@@ -3,18 +3,23 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "start": "nodemon server.js -e ejs,js,css"
+        "start": "nodemon server.js -e ejs,js,css",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
     },
     "dependencies": {
         "ejs": "^3.1.9",
-        "express": "~4.16.1"
+        "express": "~4.16.1",
+        "nodemon": "^3.0.1",
+        "reload": "^3.2.1"
     },
     "devDependencies": {
         "eslint": "^8.47.0",
+        "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-prettier": "^9.0.0",
-        "nodemon": "^3.0.1",
-        "prettier": "^3.0.2",
-        "reload": "^3.2.1",
-        "sass": "^1.66.1"
+        "eslint-plugin-css": "^0.8.1",
+        "eslint-plugin-html": "^7.1.0",
+        "eslint-plugin-import": "^2.28.1",
+        "prettier": "^3.0.2"
     }
 }
