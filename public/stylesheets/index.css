@@ -4,6 +4,7 @@
     margin-bottom: 2rem;
     height: calc(100vh - 90px);
 }
+
 #hero-container .text-section {
     width: 50%;
 }
@@ -13,8 +14,6 @@
     justify-content: center;
 }
 #hero-container .heading {
-    margin-bottom: 30px;
-    font-size: 250%;
     color: var(--text);
 }
 #hero-container .heading span {
@@ -22,7 +21,6 @@
 }
 #hero-container .paragraph {
     margin-bottom: 30px;
-    font-size: 2.5vw;
 }
 #hero-container .btn-1,
 #hero-container .btn-2 {
@@ -40,40 +38,162 @@
 #category-section {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    margin-bottom: 1rem;
+    gap: 20px;
+    margin: 3rem 0;
 }
+
 #category-section .item {
+    padding-top: 20px;
+    border-radius: 15px;
+    background-color: var(--background);
+}
+#category-section .item:hover {
+    position: relative;
+    top: -5px;
+    left: -5px;
+    box-shadow: 5px 5px var(--foreground);
 }
 #category-section .img {
     margin: 0 auto;
     width: 80%;
     background-image: url('/images/cat.jpg');
     background-size: cover;
-    border-radius: 50%;
+    border-radius: 20px;
     padding-top: 80%;
 }
 #category-section .category-name {
-    position: relative;
-    top: -20px;
-    margin-left: 15%;
-    width: 75%;
-    border-radius: 26px;
-    padding: 10px 5px;
+    text-align: center;
     font-size: 90%;
-    font-weight: bold;
+    color: var(--foreground);
+    font-weight: 600;
+}
+
+#subscribe-section {
+    background-color: rgba(200, 200, 200, 0.15);
+    border-radius: 15px;
+    border: solid 1px grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 30px;
+    margin-bottom: 1rem;
+}
+#subscribe-section h1 {
+    color: var(--text);
+}
+#subscribe-section p {
+    margin: 5px 0 30px 0;
+    font-size: 12px;
+}
+#subscribe-section textarea {
+    padding: 15px 20px;
+    background-color: rgba(200, 200, 200, 0.1);
+    width: 30vw;
+    margin-right: 20px;
+    font-size: 16px;
+    font-family: sans-serif;
+    border-radius: 30px;
+}
+#subscribe-section button {
+    padding: 15px 30px;
+    border-radius: 30px;
+    position: relative;
+    top: -17px;
+    font-size: 90%;
+}
+
+#featured-section {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 2rem 0 5rem 0;
+}
+@media only screen and (max-width: 900px) {
+    #featured-section {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+}
+#featured-section .item {
+    padding: 10px;
+    overflow: hidden;
+    background-color: var(--background);
+}
+#featured-section .item:hover {
+    border: 2px solid var(--foreground);
+    border-radius: 10px;
+}
+#featured-section img {
+    width: 100%;
+    aspect-ratio: 0.8;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 0.7s;
+}
+#featured-section .item:hover img {
+    aspect-ratio: 1;
+}
+#featured-section .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 5px 10px;
+}
+#featured-section .price {
+    margin: 5px 10px;
+}
+#featured-section .price i {
+    font-size: 12px;
+}
+#featured-section .btn-part {
+    display: none;
+}
+#featured-section .item:hover .btn-part {
+    display: flex;
+}
+#featured-section .add-btn {
+    border-radius: 5px 0 0 5px;
+    width: calc(100% - 55px);
+    height: 40px;
+    margin: 0 10px;
+}
+#featured-section .link-btn {
+    border-radius: 0 5px 5px 0;
+    width: 30px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+#self-promotion .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    margin-top: 1rem;
+}
+#self-promotion .grid .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 20px;
+    border-left: 4px solid var(--foreground);
+}
+#self-promotion i {
+    font-size: 200%;
+}
+#self-promotion p {
+    color: var(--foreground);
+    text-align: center;
+    font-weight: 500;
+    margin: 0;
+}
+#self-promotion .grid .item:first-child {
+    border: none;
 }
 
 /* Tablet */
-@media only screen and (max-width: 768px) and (min-width: 480px) {
+@media only screen and (max-width: 768px) {
     #hero-container {
-        height: calc(100vh - 120px);
-    }
-    #hero-container .heading,
-    #hero-container .paragraph {
-        margin: 0 0 10px 0;
-    }
-    #hero-container .heading {
-        font-size: 200%;
+        height: calc(50vh);
     }
 
     #hero-container .btn-1,
@@ -88,6 +208,33 @@
 
     #category-section {
         grid-template-columns: repeat(3, 1fr);
+        margin: 0 0 3rem 0;
+    }
+    #subscribe-section textarea {
+        display: block;
+        width: 60vw;
+        margin: 0;
+    }
+    #subscribe-section button {
+        position: static;
+        width: 50%;
+        margin: 15px 25%;
+    }
+    #self-promotion .grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+    }
+    #self-promotion .grid .item {
+        border: none;
+        padding: 20px 0;
+        justify-content: center;
+    }
+    #self-promotion .grid i {
+        margin-right: 20px;
+    }
+    #self-promotion .grid .item:first-child,
+    #self-promotion .grid .item:nth-child(2) {
+        border-bottom: 4px solid var(--foreground);
     }
 }
 
@@ -134,5 +281,32 @@
 
     #category-section {
         grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+    }
+    #category-section .item {
+        margin: 10px 30px;
+    }
+
+    #subscribe-section textarea {
+        display: block;
+        width: 60vw;
+        margin: 0;
+    }
+    #subscribe-section button {
+        position: static;
+        width: 50%;
+        margin: 15px 25%;
+    }
+
+    #featured-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #self-promotion .grid i {
+        margin-right: 5px;
+    }
+    #self-promotion .grid .item p {
+        font-size: 16px;
+        line-height: 19px;
     }
 }

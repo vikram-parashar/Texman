@@ -12,10 +12,9 @@
 
 body {
     all: unset;
-    box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
         sans-serif;
-
+    box-sizing: border-box;
     color: var(--text);
     background-image: radial-gradient(
         circle at 30vw 70vh,
@@ -23,8 +22,6 @@ body {
         #040912,
         #0c0b1e
     );
-    background-size: 100vw 100vh;
-    background-repeat: repeat-y;
 }
 h1,
 h2,
@@ -32,11 +29,24 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--foreground);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
 }
-button {
-    background: none;
-    color: var(--text);
+h1 {
+    font-size: 4vw;
+    letter-spacing: -0.5px;
+    line-height: 1.2em;
+}
+p {
+    font-size: 20px;
+    letter-spacing: initial;
+    line-height: 28px;
+}
+.title {
+    font-size: 14px;
+    letter-spacing: -0.56px;
+    font-weight: 700;
 }
 textarea {
     background: none;
@@ -53,8 +63,14 @@ textarea {
 }
 button {
     background-color: var(--background);
-    border-radius: 5px;
     border: 2px solid var(--foreground);
+    color: var(--text);
+}
+.btn-highlight {
+    background-color: var(--foreground);
+    border: none;
+    color: var(--background);
+    font-weight: bold;
 }
 a {
     text-decoration: none;
@@ -93,6 +109,7 @@ a:hover {
     align-items: center;
     grid-template-columns: repeat(12, 1fr);
     border-bottom: 1px solid var(--subtle);
+    z-index: 2;
 }
 #nav-logo {
     height: 13px;
@@ -127,9 +144,36 @@ a:hover {
 main {
     margin: 0 50px;
 }
-
+.banner-head .heading {
+    width: 40%;
+    height: 70px;
+    display: grid;
+    margin: 0 auto;
+    place-items: center;
+    text-align: center;
+    border-radius: 10px;
+}
+.banner-head .bg-line {
+    position: relative;
+    left: -50px;
+    top: -35px;
+    z-index: -1;
+    height: 15px;
+    width: 120vw;
+    background: linear-gradient(to right, var(--foreground), var(--background));
+    opacity: 0.5;
+}
 /* Tablet */
-@media only screen and (max-width: 768px) and (min-width: 480px) {
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 5vw;
+        letter-spacing: -0.5px;
+        line-height: 1.2em;
+    }
+    p {
+        font-size: 16px;
+        line-height: 19px;
+    }
     #nav-bar {
         padding-top: 10px;
         height: 100px;
@@ -146,11 +190,47 @@ main {
     main {
         margin: 0 35px;
     }
+    .banner-head .heading {
+        width: 80%;
+    }
+}
+
+footer {
+    width: 100%;
+    position: relative;
+    margin-top: 2rem;
+}
+footer .upper-triangle,
+footer .upper-triangle-shadow {
+    height: 50px;
+    width: 100vw;
+    background-color: var(--background);
+    clip-path: polygon(0 100%, 50% 0, 100% 100%, 0 100%);
+}
+footer .upper-triangle-shadow {
+    background-color: var(--foreground);
+    position: absolute;
+    top: -2px;
+}
+footer .footer-content {
+    height: 200px;
+    width: 100%;
+    background-color: var(--background);
 }
 
 /* Mobile */
 @media only screen and (max-width: 480px) {
+    h1 {
+        font-size: 8vw;
+        letter-spacing: 0;
+        line-height: 1.2em;
+    }
+    p {
+        font-size: 20px;
+        line-height: 28px;
+    }
     #nav-bar {
+        height: 50px;
         padding: 0 20px;
         display: flex;
         justify-content: space-between;
@@ -159,7 +239,8 @@ main {
         display: none;
         z-index: 1;
         position: fixed;
-        left: 0;
+        left: 10px;
+        top: 20px;
         width: 50vw;
     }
     #nav-toggle {
