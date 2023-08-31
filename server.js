@@ -5,6 +5,7 @@ const app = express()
 
 app.set('app engine', 'ejs')
 app.use(express.static('public'))
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
 app.get('/', (req, res) => {
     res.render('index.ejs')
