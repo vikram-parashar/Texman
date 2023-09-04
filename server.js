@@ -1,23 +1,34 @@
-const express = require('express')
-const reload = require('reload')
+const express = require("express");
+const reload = require("reload");
 
-const app = express()
+const app = express();
 
-app.set('app engine', 'ejs')
-app.use(express.static('public'))
-app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.set("app engine", "ejs");
+app.use(express.static("public"));
+app.use("/jquery", express.static(__dirname + "/node_modules/jquery/dist/"));
 
-app.get('/', (req, res) => {
-    res.render('index.ejs')
-})
+app.get("/", (req, res) => {
+  res.render("index.ejs");
+});
+app.get("/login", (req, res) => {
+  res.render("login.ejs");
+});
+app.get("/register", (req, res) => {
+  res.render("register.ejs");
+});
+app.get("/product", (req, res) => {
+  res.render("product.ejs");
+});
+app.get("/shop", (req, res) => {
+  res.render("shop-page.ejs");
+});
+app.get("/cart", (req, res) => {
+  res.render("view-cart.ejs");
+});
 
-app.listen(3000)
+app.listen(3000);
 
-app.get('/product', (req, res) => {
-    res.render('product.ejs')
-})
-
-reload(app)
+reload(app);
 // const searchItem = "headphone";
 // app.get("/",async()=>{
 //
