@@ -1,0 +1,92 @@
+body {
+  background-color: #111;
+}
+#category-heading {
+  text-align: center;
+}
+#product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+#product-grid .item {
+  position: relative;
+  width: 100%;
+  background: var(--background);
+  border-radius: 15px;
+  overflow: hidden;
+}
+#product-grid .item::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  width: 100%;
+  height: 100%;
+  background: var(--foreground);
+  transform: skewY(345deg);
+  transition: 0.5s;
+}
+#product-grid .item:hover::before {
+  top: -70%;
+  transform: skewY(390deg);
+}
+#product-grid .item::after {
+  content: "BRANDED NAME";
+  position: absolute;
+  bottom: 25px;
+  left: 10px;
+  font-weight: 600;
+  font-size: 5vw;
+  color: rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+#product-grid .item img {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  z-index: 1;
+}
+#product-grid .item .contentBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+#product-grid .item .contentBox h3 {
+  text-align: center;
+  /* text-transform: uppercase; */
+  margin: 5px 0 0 0;
+  background: var(--background);
+  /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
+}
+#product-grid .item .contentBox .price {
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#product-grid .item .contentBox .buy {
+  position: relative;
+  top: 15px;
+  opacity: 0;
+  padding: 10px 5px;
+  width: 70%;
+  text-align: center;
+  color: var(--background);
+  background-color: var(--foreground);
+  border-radius: 30px;
+  transition: 0.5s;
+  margin-bottom: 1rem;
+}
+
+#product-grid .item:hover .contentBox .buy {
+  top: 0;
+  opacity: 1;
+}
+
+.mouse {
+  height: 300px;
+  width: auto;
+}
