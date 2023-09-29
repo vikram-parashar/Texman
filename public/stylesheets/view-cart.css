@@ -1,0 +1,106 @@
+body {
+  background: radial-gradient(
+      circle at 90vw 50%,
+      var(--bg-gradient),
+      #0c0c0c,
+      transparent 45vw
+    ),
+    black;
+}
+
+main {
+  display: flex;
+}
+
+main .left-section {
+  width: 75%;
+}
+main .left-section .heading {
+  height: 50px;
+}
+#products-div .item {
+  position: relative;
+  margin: 0 20px 20px 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--background);
+  height: 150px;
+  overflow: hidden;
+  align-items: center;
+  border-radius: 10px;
+}
+#products-div .item::before {
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 300px;
+  background: var(--foreground);
+  transform: skewX(220deg);
+  transition: 0.5s;
+  align-self: normal;
+}
+#products-div .products-img {
+  position: relative;
+  z-index: 2;
+  height: 90%;
+}
+#products-div .title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 2;
+}
+#products-div .brand {
+  color: rgba(165, 191, 211, 0.9);
+}
+#products-div .count {
+  display: flex;
+}
+#products-div .count p {
+  display: grid;
+  place-items: center;
+  margin: 0 15px;
+}
+#products-div .count i {
+  display: block;
+}
+#products-div .count .plus {
+  margin-bottom: 10px;
+}
+#products-div .remove {
+  height: 100%;
+  width: 40px;
+  background: var(--foreground);
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  color: var(--background);
+  font-size: 20px;
+}
+
+#summary-section {
+  width: 25%;
+  height: 70vh;
+  margin-top: 82px;
+  background-color: rgba(100, 100, 100, 0.3);
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 15px;
+}
+#summary-section h2 {
+  border-bottom: solid 1px var(--subtle);
+  padding-bottom: 20px;
+}
+#summary-section .quan-price,
+#summary-section .total {
+  display: flex;
+  justify-content: space-between;
+}
+#summary-section .total {
+  border-top: solid 1px var(--subtle);
+  padding-top: 20px;
+}

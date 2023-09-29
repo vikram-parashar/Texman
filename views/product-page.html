@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/stylesheets/global.css" type="text/css" rel="stylesheet" />
+  <link href="/stylesheets/product-page.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="background"></div>
+  <!-- Nav Bar -->
+  <div id="nav-bar">
+    <div class="upper-part">
+      <img class="logo" src="images/logo.png" alt="favicon" />
+
+      <div class="center-part">
+        <div class="search-bar">
+          <i class="nf nf-seti-search"></i>
+          <textarea rows="1" placeholder="search..."></textarea>
+        </div>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a class="category-dropdown">Categrories <i class="nf nf-oct-chevron_down"></i></a>
+          <a>Linking Link</a>
+        </div>
+      </div>
+
+      <div class="icon-part">
+        <a href="/register" class="nf nf-fa-user_circle"></a>
+        <a href="/cart" class="nf nf-md-cart_outline"></a>
+        <button class="nav-toggle nf nf-md-menu" role="button" onclick="navToggle()"></button>
+      </div>
+    </div>
+
+    <div class="sub-links">
+      <a href="/shop/headphone">Headphones</a>
+      <a href="/shop/monitors">Monitors</a>
+      <a href="/shop/chairs">Chairs</a>
+      <a href="/shop/controllers">Controllers</a>
+      <a href="/shop/cooling-pads">Cooling Pads</a>
+      <a href="/shop/mouses">Mouses</a>
+    </div>
+
+    <div class="pop-part">
+      <div class="pop-search-bar search-bar">
+        <i class="nf nf-seti-search"></i>
+        <textarea rows="1" placeholder="search..."></textarea>
+      </div>
+      <div class="pop-nav-links">
+        <a href="/">Home</a>
+        <a class="category-dropdown">Categrories <i class="nf nf-oct-chevron_down"></i></a>
+        <div class="pop-sub-links">
+          <a href="/shop/headphone">Headphones</a>
+          <a href="/shop/monitors">Monitors</a>
+          <a href="/shop/chairs">Chairs</a>
+          <a href="/shop/controllers">Controllers</a>
+          <a href="/shop/cooling-pads">Cooling Pads</a>
+          <a href="/shop/mouses">Mouses</a>
+        </div>
+        <a>Linking Link</a>
+      </div>
+    </div>
+  </div>
+  <!-- main content begins -->
+  <main>
+    <div class="outer-container">
+      <div class="product info">
+        <h1 class="product-name">Texman Gaming</h1>
+        <p>Brand Name</p>
+        <p>Number of reviews</p>
+        <!-- Tab links -->
+        <div class="tab">
+          <button class="tablinks" onclick="openCity(event, 'London')" style="color: var(--text);"
+            onstart="openCity(event, 'London')" style="color: var(--text);">London</button>
+          <button class="tablinks" onclick="openCity(event, 'Paris')" style="color: var(--text);">Paris</button>
+          <button class="tablinks" onclick="openCity(event, 'Tokyo')" style="color: var(--text);">Tokyo</button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="London" class="tabcontent">
+          <h3>London</h3>
+          <p>London is the capital city of England.</p>
+        </div>
+
+        <div id="Paris" class="tabcontent">
+          <h3>Paris</h3>
+          <p>Paris is the capital of France.</p>
+        </div>
+
+        <div id="Tokyo" class="tabcontent">
+          <h3>Tokyo</h3>
+          <p>Tokyo is the capital of Japan.</p>
+        </div>
+
+
+
+      </div>
+      <div class="product images">
+        <div class="img-background">
+
+        </div>
+        <div class="slideshow-container">
+
+          <!-- Full-width images with number and caption text -->
+          <div class="mySlides fade">
+            <div class="numbertext">1 / 3</div>
+            <img src="/images/cat.png" style="width:70%;margin-left: 15%;">
+            <div class="text">Caption Text</div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">2 / 3</div>
+            <img src="/images/Gencraft - What will you create__files/image1_0_watermark(2).jpg"
+              style="width:70%;margin-left: 15%;">
+            <div class="text">Caption Two</div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">3 / 3</div>
+            <img src="/images/Gencraft - What will you create__files/image0_0_watermark(2).jpg"
+              style="width:70%;margin-left: 15%;">
+            <div class="text">Caption Three</div>
+          </div>
+
+          <!-- Next and previous buttons -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center;margin-top: 5%;">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer section -->
+  <footer>
+    <div class="upper-triangle-shadow"></div>
+    <div class="upper-triangle"></div>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4 id="com">Company</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Our services</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Affiliate program</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 id="gh">Get Help</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Order status</a></li>
+          <li><a href="#">Payment Options</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 id="os">Online Shop</h4>
+        <ul>
+          <li><a href="#">Monitors</a></li>
+          <li><a href="#">Keyboards</a></li>
+          <li><a href="#">Mouse</a></li>
+          <li><a href="#">Headsets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col ">
+        <h4 id="foot">Follow us</h4>
+        <div class="social-links">
+          <a href="#"><i class="nf nf-fa-facebook_official"></i></a>
+          <a href="#"><i class="nf nf-fa-twitter"></i></a>
+          <a href="#"><i class="nf nf-md-instagram"></i></a>
+          <a href="#"><i class="nf nf-md-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Back to Top -->
+  <button id="back-to-top" class="nf nf-fa-chevron_up btn-darken" onclick="backToTop()"></button>
+
+  <script src="/jquery/jquery.js"></script>
+  <script src="/scripts/global.js"></script>
+  <script src="/reload/reload.js"></script>
+
+  <script src="/scripts/product-page.js" async defer></script>
+</body>
+
+</html>

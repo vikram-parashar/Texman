@@ -1,10 +1,4 @@
 body {
-  /* background-image: radial-gradient( */
-  /* ellipse at 50vw 50vh, */
-  /* #28235c, */
-  /* #222222, */
-  /* traspatent */
-  /* ); */
   background: radial-gradient(
       circle at 24vw 16%,
       var(--bg-gradient),
@@ -63,6 +57,7 @@ body {
   font-weight: bold;
   font-size: 90%;
   max-width: 200px;
+  white-space: nowrap;
 }
 #hero-container img {
   width: 80%;
@@ -168,7 +163,7 @@ body {
 }
 @media only screen and (max-width: 900px) {
   #featured-section .blank-item-container {
-    height: 45vw;
+    height: 47vw;
   }
   #featured-section {
     grid-template-columns: repeat(3, 1fr);
@@ -243,6 +238,9 @@ body {
   margin: 5px 0 30px 0;
   font-size: 12px;
 }
+#subscribe-section .form {
+  display: flex;
+}
 #subscribe-section textarea {
   padding: 15px 20px;
   background-color: rgba(200, 200, 200, 0.1);
@@ -281,14 +279,15 @@ body {
 /* Tablet */
 @media only screen and (max-width: 768px) {
   #hero-container {
-    height: calc(60vh);
+    height: auto;
   }
 
   #hero-container .btn-1,
   #hero-container .btn-2 {
-    margin-bottom: 10px;
-    margin-right: 5px;
     padding: 5px 10px;
+    font-size: 70%;
+    white-space: nowrap;
+    margin: 0;
   }
   #hero-container img {
     width: 100%;
@@ -315,10 +314,20 @@ body {
   }
 
   #category-section {
-    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-areas:
+      "a a a a a a"
+      "b b b c c c"
+      "d d e e f f";
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 33vh);
+    gap: 15px;
     margin: 0 0 3rem 0;
   }
 
+  #subscribe-section .form {
+    display: block;
+  }
   #subscribe-section textarea {
     display: block;
     width: 60vw;
@@ -380,13 +389,16 @@ body {
   }
 
   #category-section {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    display: grid;
+    grid-template-areas:
+      "a a a a a a"
+      "b b b c c c"
+      "d d e e f f";
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 33vh);
+    gap: 15px;
+    margin: 0 0 3rem 0;
   }
-  #category-section .img {
-    aspect-ratio: 1.8;
-  }
-
   #featured-section .blank-item-container {
     height: 70vw;
   }

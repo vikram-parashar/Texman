@@ -1,35 +1,46 @@
-.outer-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    height: 100vh;
+body {
+  background: radial-gradient(
+      circle at 20vw 50%,
+      var(--bg-gradient),
+      #0c0c0c,
+      transparent 45vw
+    ),
+    black;
 }
-.img-background{
-    background-color: var(--foreground);
-    transform: skew(45deg);
-    height: 100%;
-    width: 150%;
-    position: relative;
-    left: 50%;
-    overflow: visible;
-    z-index: -2;
+.outer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100vh;
 }
-.product-name{
+.img-background {
+  background-color: var(--foreground);
+  transform: skew(45deg);
+  height: 100%;
+  width: 150%;
+  position: relative;
+  left: 50%;
+  overflow: visible;
+  z-index: -2;
+}
+.product-name {
   margin-top: 12%;
   font-size: 400%;
 }
-.info{
+.info {
   display: flex;
   flex-direction: column;
   align-items: left;
   padding-left: 2.5%;
 }
-.product{
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+.product {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
-* {box-sizing:border-box}
+* {
+  box-sizing: border-box;
+}
 
 /* Slideshow container */
 .slideshow-container {
@@ -40,12 +51,13 @@
 
 /* Hide the images by default */
 .mySlides {
-  display:none;
+  display: none;
   text-align: center;
 }
 
 /* Next & previous buttons */
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -66,8 +78,9 @@
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Caption text */
@@ -102,7 +115,8 @@
   transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
+.active,
+.dot:hover {
   background-color: #717171;
 }
 
@@ -113,8 +127,12 @@
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 /* Style the tab */
 .tab {
@@ -122,7 +140,7 @@
   font-size: 150%;
   overflow: hidden;
   border: none;
-  background:none;
+  background: none;
   display: flex;
   flex-direction: row;
   gap: 20px;
