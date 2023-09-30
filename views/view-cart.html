@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/stylesheets/global.css" type="text/css" rel="stylesheet" />
+  <link href="/stylesheets/view-cart.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="background"></div>
+  <!-- Nav Bar -->
+  <div id="nav-bar">
+    <div class="upper-part">
+      <img class="logo" src="images/logo.png" alt="favicon" />
+
+      <div class="center-part">
+        <div class="search-bar">
+          <i class="nf nf-seti-search"></i>
+          <textarea rows="1" placeholder="search..."></textarea>
+        </div>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a class="category-dropdown">Categrories <i class="nf nf-oct-chevron_down"></i></a>
+          <a>Linking Link</a>
+        </div>
+      </div>
+
+      <div class="icon-part">
+        <a href="/register" class="nf nf-fa-user_circle"></a>
+        <a href="/cart" class="nf nf-md-cart_outline"></a>
+        <button class="nav-toggle nf nf-md-menu" role="button" onclick="navToggle()"></button>
+      </div>
+    </div>
+
+    <div class="sub-links">
+      <a href="/shop/headphone">Headphones</a>
+      <a href="/shop/monitors">Monitors</a>
+      <a href="/shop/chairs">Chairs</a>
+      <a href="/shop/controllers">Controllers</a>
+      <a href="/shop/cooling-pads">Cooling Pads</a>
+      <a href="/shop/mouses">Mouses</a>
+    </div>
+
+    <div class="pop-part">
+      <div class="pop-search-bar search-bar">
+        <i class="nf nf-seti-search"></i>
+        <textarea rows="1" placeholder="search..."></textarea>
+      </div>
+      <div class="pop-nav-links">
+        <a href="/">Home</a>
+        <a class="category-dropdown">Categrories <i class="nf nf-oct-chevron_down"></i></a>
+        <div class="pop-sub-links">
+          <a href="/shop/headphone">Headphones</a>
+          <a href="/shop/monitors">Monitors</a>
+          <a href="/shop/chairs">Chairs</a>
+          <a href="/shop/controllers">Controllers</a>
+          <a href="/shop/cooling-pads">Cooling Pads</a>
+          <a href="/shop/mouses">Mouses</a>
+        </div>
+        <a>Linking Link</a>
+      </div>
+    </div>
+  </div>
+  <!-- main content begins -->
+  <main>
+      <div class="product-card-container">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="product-image" />
+          <div class="text-section">
+            <div class="center-section">
+              <h2>Nike Air Max 2019</h2>
+              <p class="price">36EU - 4US</p>
+            </div>
+            <div class="right-section">
+              <div class="quantity">
+                <span class="minus"> - </span>
+                <input type="number" value="2" min="1" />
+                <span class="plus"> + </span>
+              </div>
+              <div class="bottom-right-section">
+                <p>259.000 ₭</p>
+                <i class="nf nf-fa-trash"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="product-image" />
+          <div class="text-section">
+            <div class="center-section">
+              <h2>Nike Air Max 2019</h2>
+              <p class="price">36EU - 4US</p>
+            </div>
+            <div class="right-section">
+              <div class="quantity">
+                <span class="minus"> - </span>
+                <input type="number" value="2" min="1" />
+                <span class="plus"> + </span>
+              </div>
+              <div class="bottom-right-section">
+                <p>259.000 ₭</p>
+                <i class="nf nf-fa-trash"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="summary-container">
+        <div class="summary">
+        <div class="subtotal">
+          <p class="text-gray-700">Subtotal</p>
+          <p class="text-gray-700">$129.99</p>
+        </div>
+        <div class="shipping">
+          <p class="text-gray-700">Shipping</p>
+          <p class="text-gray-700">$4.99</p>
+        </div>
+        <hr/>
+        <div class="below-hr">
+          <p class="total-text">Total</p>
+          <div class="">
+            <p class="total-value">$134.98 USD</p>
+            <p style="font-size:0.85rem;">including VAT</p>
+          </div>
+        </div>
+        <button>Check out</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer section -->
+  <footer>
+    <div class="upper-triangle-shadow"></div>
+    <div class="upper-triangle"></div>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4 id="com">Company</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Our services</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Affiliate program</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 id="gh">Get Help</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Order status</a></li>
+          <li><a href="#">Payment Options</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 id="os">Online Shop</h4>
+        <ul>
+          <li><a href="#">Monitors</a></li>
+          <li><a href="#">Keyboards</a></li>
+          <li><a href="#">Mouse</a></li>
+          <li><a href="#">Headsets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col ">
+        <h4 id="foot">Follow us</h4>
+        <div class="social-links">
+          <a href="#"><i class="nf nf-fa-facebook_official"></i></a>
+          <a href="#"><i class="nf nf-fa-twitter"></i></a>
+          <a href="#"><i class="nf nf-md-instagram"></i></a>
+          <a href="#"><i class="nf nf-md-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Back to Top -->
+  <button id="back-to-top" class="nf nf-fa-chevron_up btn-darken" onclick="backToTop()"></button>
+
+  <script src="/jquery/jquery.js"></script>
+  <script src="/scripts/global.js"></script>
+  <script src="/reload/reload.js"></script>
+
+  <script src="/scripts/product-page.js" async defer></script>
+</body>
+
+</html>
