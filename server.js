@@ -10,7 +10,6 @@ import { fileURLToPath } from 'url';
 const app = express();
 const port = 3000;
 var dataFromDatabase;
-var loggedUserName;
 
 app.listen(port, () => {
   console.log("Server started port 3000");
@@ -66,7 +65,6 @@ const cartSchema = new Schema({
 });
 
 const carts = model("cart", cartSchema);
-
 const Users = model("user", userSchema);
 
 //find and log all data of particular collection
@@ -107,17 +105,19 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-
 app.get('/data', (req, res) => {
     res.json(dataFromDatabase);
 });
 
 app.get("/shop/:id", async (req, res) => {
-    const category = req.params.id
-    const array = await displayItems(category); 
-    console.log(array[0]); //change headphones to any category within database
-    dataFromDatabase= array;
-    res.sendFile(path.join(__dirname, 'views', 'shop-page.html'));
+    try{ const category = req.params.id
+        const array = await displayItems(category); 
+        console.log(array[0]); //change headphones to any category within database
+        dataFromDatabase= array;
+        res.sendFile(path.join(__dirname, 'views', 'shop-page.html'));}
+        catch(err){
+            console.log(err)
+        }
 })
 
 app.get("/product/:id", async (req, res) => {
