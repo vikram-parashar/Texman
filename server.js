@@ -3,13 +3,14 @@ import express from "express";
 import bcrypt from "bcrypt";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import { createToken, validateToken, displayCart } from "./jwt.js";
-import path from "path";
-import { fileURLToPath } from "url";
-import reload from "reload";
+import { createToken,validateToken,displayCart } from "./jwt.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 const port = 3000;
+var dataFromDatabase;
+var loggedUserName;
 
 app.listen(port, () => {
   console.log("Server started port 3000");
@@ -25,7 +26,7 @@ app.use(cookieParser());
 
 //connection string for the Products database
 mongoose
-  .connect(
+.connect(
     "mongodb+srv://atharvanpohnerkar2:atharvan2@webkriti.qyzfxlj.mongodb.net/Products?retryWrites=true&w=majority",
     { useNewUrlParser: true },
   )
@@ -67,15 +68,6 @@ const cartSchema = new Schema({
 const carts = model("cart", cartSchema);
 
 const Users = model("user", userSchema);
-// const headphones = model("headphones",productSchema);
-
-// const headphone1 = new Headphone({"title":"Redgear Cosmo 7,1 Usb Gaming Wired Over Ear Headphones With Mic With Virtual Surround Sound,50Mm Driver, Rgb Leds & Remote Control(Black)","price":""," colour":"Black)","discount":"","features":["Redgear Cosmo 7","50Mm Driver"," Rgb Led s & Remote Control(Black)"],"href":"/Redgear-Cosmo-7-1-Headphones-Controller/dp/B079S811J3/ref=sr_1_1?keywords=gaming+headphones&qid=1693218774&sr=8-1","review":" 16,164"});
-
-// Users.find().then((users) => {
-//     users.forEach((user) => {
-//         console.log(user)
-//     })
-// })
 
 //find and log all data of particular collection
 async function displayItems(search) {
@@ -115,28 +107,28 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-app.get("/shop", async (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'shop-page.html'));
+
+app.get('/data', (req, res) => {
+    res.json(dataFromDatabase);
 });
 
-// app.get("/shop/:id", async (req, res) => {
-//   const category = req.params.id;
-//   const array = await displayItems(category);
-//   console.log(array[0]); //change headphones to any category within database
-//   res.render("shop-page.ejs", { content: array });
-// });
+app.get("/shop/:id", async (req, res) => {
+    const category = req.params.id
+    const array = await displayItems(category); 
+    console.log(array[0]); //change headphones to any category within database
+    dataFromDatabase= array;
+    res.sendFile(path.join(__dirname, 'views', 'shop-page.html'));
+})
 
-app.get("/product/zebbang", async (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'product-page.html'));
+app.get("/product/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  const product = await productDetails(id);
+  console.log(product);
+  dataFromDatabase= product;
+    res.sendFile(path.join(__dirname, 'views', 'product-page.html'));
+  
 });
-
-// app.get("/product/:id", async (req, res) => {
-//   const id = req.params.id;
-//   console.log(id);
-//   const product = await productDetails(id);
-//   console.log(product);
-//   res.render("product.ejs", { content: product });
-// });
 
 app.get("/register", async (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'register.html'));
@@ -146,76 +138,83 @@ app.get("/login", async (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
 
-//used for registering an user
-// app.post("/register", async (req, res) => {
-//   console.log(req.body);
-//   var hashed;
-//   try {
-//     const userName = req.body.userName;
-//     const password = req.body.password;
-//     const email = req.body.email;
-//     const user = await Users.findOne({ userName: userName, email: email });
-//     if (user !== null) {
-//       res.render("register.ejs", { message: "User exists, try logging in" });
-//     } else {
-//       await bcrypt.hash(password, 10).then((hash) => {
-//         hashed = hash;
-//       });
-//       carts.create({
-//         userName: userName,
-//         password: hashed,
-//         productArray: null,
-//       });
-//       Users.create({ userName: userName, password: hashed, email: email }).then(
-//         (createdUser) => {
-//           const accessToken = createToken(createdUser); // Create token with the created user
-//           console.log(accessToken);
-//           res.cookie("token", accessToken, {
-//             maxAge: 60 * 60 * 24 * 1000,
-//           });
-//         },
-//       );
-//
-//       res.render("register.ejs", { message: "register success" });
-//     }
-//   } catch (error) {
-//     res.render("register.ejs", { message: "register failed" + error });
-//   }
-// });
+
+app.post("/register", async (req, res) => {
+  console.log(req.body);
+  var hashed;
+  try {
+    const userName = req.body.userName;
+    const password = req.body.password;
+    const email = req.body.email;
+    const user = await Users.findOne({ userName: userName, email: email });
+    if (user !== null) {
+        dataFromDatabase = "User exists, try logging in";
+        res.sendFile(path.join(__dirname, 'views', 'register.html'));
+    //   res.render("register.html", { message: "User exists, try logging in" });
+    } else {
+      await bcrypt.hash(password, 10).then((hash) => {
+        hashed = hash;
+      });
+      carts.create({
+        userName: userName,
+        password: hashed,
+        productArray: null,
+      });
+      Users.create({ userName: userName, password: hashed, email: email }).then(
+        (createdUser) => {
+          const accessToken = createToken(createdUser); // Create token with the created user
+          console.log(accessToken);
+          res.cookie("token", accessToken, {
+            maxAge: 60 * 60 * 24 * 1000,
+          });
+        },
+      );
+       dataFromDatabase = "Successfully registered";
+      res.sendFile(path.join(__dirname, 'views', 'register.html'));
+     
+    }
+  } catch (error) {
+    dataFromDatabase = "register failed" + error ;
+    res.sendFile(path.join(__dirname, 'views', 'register.html'));
+  }
+});
 
 //used for logging in an user
-// app.post("/login", async (req, res) => {
-//   console.log(req.body);
-//   var hashed;
-//   try {
-//     const userName = req.body.userName;
-//     const password = req.body.password;
-//     const email = req.body.email;
-//     const user = await Users.findOne({ userName: userName, email: email });
-//     console.log(user);
-//     if (user._id !== null) {
-//       bcrypt.compare(password, user.password, (err, result) => {
-//         if (err) {
-//           console.error("Error comparing passwords:", err);
-//         } else if (result) {
-//           const accessToken = createToken(user);
-//           console.log(accessToken);
-//           res.cookie("token", accessToken, {
-//             maxAge: 60 * 60 * 24 * 1000,
-//           });
-//
-//           res.render("login.ejs", { message: "User successfully logged in" });
-//         } else {
-//           res.render("login.ejs", { message: "Incorrect password" });
-//         }
-//       });
-//     } else {
-//       res.render("login.ejs", { message: "User not found Plz sign up" });
-//     }
-//   } catch (error) {
-//     res.render("login.ejs", { message: "Login error : " + error });
-//   }
-// });
+app.post("/login", async (req, res) => {
+  console.log(req.body);
+  var hashed;
+  try {
+    const userName = req.body.userName;
+    const password = req.body.password;
+    const email = req.body.email;
+    const user = await Users.findOne({ userName: userName, email: email });
+    console.log(user);
+    if (user._id !== null) {
+      bcrypt.compare(password, user.password, (err, result) => {
+        if (err) {
+          console.error("Error comparing passwords:", err);
+        } else if (result) {
+          const accessToken = createToken(user);
+          console.log(accessToken);
+          res.cookie("token", accessToken, {
+            maxAge: 60 * 60 * 24 * 1000,
+          });
+          dataFromDatabase = "User successfully logged in" ;
+         res.sendFile(path.join(__dirname, 'views', 'login.html'));
+        } else {
+            dataFromDatabase = "Incorrect password" ;
+         res.sendFile(path.join(__dirname, 'views', 'login.html'));
+        }
+      });
+    } else {
+        dataFromDatabase ="User not found Plz sign up" ;
+      res.sendFile(path.join(__dirname, 'views', 'login.html'));
+    }
+  } catch (error) {
+    dataFromDatabase = "Login error : " + error;
+    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+  }
+});
 
 // used to add items to cart by getting their id
 app.put("/cart/:id", validateToken, async (req, res) => {
@@ -236,7 +235,8 @@ app.put("/cart/:id", validateToken, async (req, res) => {
       });
     });
     console.log(itemArray);
-    res.render("cart.ejs", { items: itemArray });
+    dataFromDatabase = itemArray;
+    res.sendFile(path.join(__dirname, 'views', 'cart.html'));
   } catch (error) {
     console.log("error" + error);
   }
@@ -255,10 +255,10 @@ app.delete("/cart/:id", validateToken, async (req, res) => {
     await carts
       .updateOne({ userName: user.userName }, { $pull: { productArray: pid } })
       .then(res.status(200));
-
     const itemList = await displayCart(userId, Users, carts);
     console.log(itemList);
-    res.render("userCart.ejs", { items: itemList });
+    dataFromDatabase = itemList;
+    res.sendFile(path.join(__dirname, 'views', 'cart.html'));
   } catch (error) {
     console.log("error" + error);
   }
@@ -269,8 +269,9 @@ app.get("/cart", validateToken, async (req, res) => {
   const userId = req.user.id;
   const itemList = await displayCart(userId, Users, carts);
   console.log(itemList);
-  res.render("userCart.ejs", { items: itemList });
+  dataFromDatabase = itemList;
+  console.log(req.user.userName)
+    res.sendFile(path.join(__dirname, 'views', 'cart.html'));
 });
 
 export { productDetails };
-reload(app);
