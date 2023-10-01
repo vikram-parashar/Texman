@@ -44,5 +44,7 @@ function openCity(evt, cityName) {
 
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
+  if(evt) evt.currentTarget.className += " active";
+    else document.querySelector('button.tablinks').className += " active";
 }
+document.body.addEventListener('DOMContentLoaded', openCity(event, 'London'));
