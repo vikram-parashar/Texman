@@ -72,68 +72,59 @@
       <div class="product info">
         <p class="product-name">Texman Gaming
         </p>
-        <p class="product-brand">Brand Name</p>
-        <p class="product-reviews">Number of reviews</p>
+
+
+        <ul>
+          <li>
+            <p class="product-brand">Brand Name</p>
+          </li>
+          <li>
+            <p class="product-reviews">Number of reviews</p>
+          </li>
+          <li>
+            <p class="product-colour">Colour</p>
+          </li>
+        </ul>
+        <br>
+        <br>
+        <p class="product-rating">Rating</p>
+        <br>
+        <br>
+        <p class="product-description"></p>
         <!-- Tab links -->
-        <div class="tab">
-          <button class="tablinks active" onclick="openCity(event, 'London')" style="color: var(--text);">London</button>
-          <button class="tablinks" onclick="openCity(event, 'Paris')" style="color: var(--text);">Paris</button>
-          <button class="tablinks" onclick="openCity(event, 'Tokyo')" style="color: var(--text);">Tokyo</button>
-        </div>
+
 
         <!-- Tab content -->
-        <div id="London" class="tabcontent">
-          <h3>London</h3>
-          <p>London is the capital city of England.hfrgvkjndbfghrhf
-            jhgfbndmshfuyiirg
-            ;'lvkjhfghjfkgklthuuiry78t5348uorupwijlkhejjdsvbhgetujwnliohpe[up j'lrktihu9]1gef [iypVHDK;BHRJEGYTIUHQGRJNLFKVJFLHPKBV
-            HGSKVBJKKHUGRA;N/.,.]GBEKLBKJ FVKN'ME'N'WJN; BWJJNL RE'KKBUITHPORGHJVDNMV FBHBGRQJ; QWKN;JBGITERIYUR9840976541-7UOHPKGHBFSNDCSJDKUH
-            GRNSVBKGSYpue ;k'[iht=e]fboc=isuyw-r7g8948t2[hu;bnfqwsc;jbkvxcgufdyehqilkn'gweflwop[  jyigorbvdjksgH
-            EGHI[RG;NSV,DBLDHJGUIE[HOLKB'G;N'HPORGJL;MDVDJO[VIhpr]g
-            
-            
-            v[jbfapk ;elnk[pihobjrgkhvvsdgr]]]]]]
-          </p>
-        </div>
 
-        <div id="Paris" class="tabcontent">
-          <h3>Paris</h3>
-          <p>Paris is the capital of France.hfrgvkjndbfghrhf
-            jhgfbndmshfuyiirg
-            ;'lvkjhfghjfkgklthuuiry78t5348uorupwijlkhejjdsvbhgetujwnliohpe[up j'lrktihu9]1gef [iypVHDK;BHRJEGYTIUHQGRJNLFKVJFLHPKBV
-            HGSKVBJKKHUGRA;N/.,.]GBEKLBKJ FVKN'ME'N'WJN; BWJJNL RE'KKBUITHPORGHJVDNMV FBHBGRQJ; QWKN;JBGITERIYUR9840976541-7UOHPKGHBFSNDCSJDKUH
-            GRNSVBKGSYpue ;k'[iht=e]fboc=isuyw-r7g8948t2[hu;bnfqwsc;jbkvxcgufdyehqilkn'gweflwop[  jyigorbvdjksgH
-            EGHI[RG;NSV,DBLDHJGUIE[HOLKB'G;N'HPORGJL;MDVDJO[VIhpr]g
-            
-            
-            v[jbfapk ;elnk[pihobjrgkhvvsdgr]]]]]]</p>
-        </div>
 
-          <div id="price">
-            <h3>$500</h3>
-          </div>
-          <div id="buy-box">
+        <div id="price">
+          <h3 id="price">$500</h3>
+        </div>
+        <div id="buy-box">
           <div>
-            <button id="buy"type="submit">
-            <h3>Buy Now</h3>
-          </button>
+            <button id="buy" type="submit">
+              <h3>Buy Now</h3>
+            </button>
           </div>
           <div>
             <button id="cart" type="submit">
-            <h3>Add to cart</h3>
-          </button>
+              <h3>Add to cart</h3>
+            </button>
           </div>
         </div>
 
 
       </div>
       <div class="product images">
+        
         <div class="img-background">
-
+          <!-- <img class="product-image" src="https://m.media-amazon.com/images/I/41GMgZG6zdL._SX300_SY300_QL70_ML2_.jpg" style="width:70%;margin-left: 15%;"> -->
+          
         </div>
-        <div class="slideshow-container">
+        <img class="product-image" src="" style="width:70%; margin-left: 15%; z-index: 1; ">
+        <!-- <div class="slideshow-container">
 
-          <!-- Full-width images with number and caption text -->
+         
           <div class="mySlides fade">
             <img src="https://m.media-amazon.com/images/I/41GMgZG6zdL._SX300_SY300_QL70_ML2_.jpg" style="width:70%;margin-left: 15%;">
             <div class="text">Caption Text</div>
@@ -155,19 +146,19 @@
           </div>
 
           <!-- Next and previous buttons -->
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
+        </div> -->
         <br>
 
         <!-- The dots/circles -->
-        <div style="text-align:center;margin-top: 5%;">
+        <!-- <div style="text-align:center;margin-top: 5%;">
           <span class="dot" onclick="currentSlide(1)"></span>
           <span class="dot" onclick="currentSlide(2)"></span>
-        </div>
-      </div>
+        <!-- </div> -->
+      </div> 
 
-    </div>
+      </div>
   </main>
 
   <!-- Footer section -->
@@ -219,49 +210,52 @@
 
   <script>
     // Function to fetch and display product data
-async function fetchAndDisplayProductData() {
-  try {
-    const response = await fetch('/data');
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+    async function fetchAndDisplayProductData() {
+      try {
+        const response = await fetch('/data');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const productData = await response.json();
+
+        // Get elements to populate with data
+        const productNameElement = document.querySelector('.product-name');
+        const productBrandElement = document.querySelector('.product-brand');
+        const productReviewsElement = document.querySelector('.product-reviews');
+        const productPriceElement = document.querySelector('#price');
+        const productRatingElement = document.querySelector('.product-rating');
+        const productColourElement = document.querySelector('.product-colour');
+        const productDescriptionElement = document.querySelector('.product-description');
+        const productImageElement = document.querySelector('.product-image');
+        const productDetailsElement = document.querySelector('.product-details');
+
+        // Populate HTML elements with data
+        productNameElement.textContent = productData.title;
+        productBrandElement.textContent = `Brand: ${productData.features.Brand}`;
+        productReviewsElement.textContent = `Reviews: ${productData.review_count}`;
+        productColourElement.textContent = `Colour: ${productData.features.Colour}`;
+        productPriceElement.textContent = `Price: ${productData.price}`;
+        productRatingElement.textContent = `Rating: ${productData.rating} / 5`;
+
+        // Populate product description
+        const descriptionList = document.createElement('ul');
+        productData.details.forEach((detail) => {
+          const listItem = document.createElement('li');
+          listItem.textContent = detail;
+          descriptionList.appendChild(listItem);
+        });
+        productDescriptionElement.appendChild(descriptionList);
+
+        // Set product image
+        productImageElement.src = productData.img_url;
+        productImageElement.alt = productData.title;
+      } catch (error) {
+        console.error('Error fetching and displaying product data:', error);
+      }
     }
-    const productData = await response.json();
 
-    // Get elements to populate with data
-    const productNameElement = document.querySelector('.product-name');
-    const productBrandElement = document.querySelector('.product-brand');
-    const productReviewsElement = document.querySelector('.product-reviews');
-    const productPriceElement = document.querySelector('.product-price');
-    const productRatingElement = document.querySelector('.product-rating');
-    const productDescriptionElement = document.querySelector('.product-description');
-    const productImageElement = document.querySelector('.product images');
-
-    // Populate HTML elements with data
-    productNameElement.textContent = productData.title;
-    productBrandElement.textContent = `Brand: ${productData.features.Brand}`;
-    productReviewsElement.textContent = `Reviews: ${productData.review_count}`;
-    productPriceElement.textContent = `Price: ${productData.price}`;
-    productRatingElement.textContent = `Rating: ${productData.rating}`;
-    
-    // Populate product description
-    const descriptionList = document.createElement('ul');
-    productData.details.forEach((detail) => {
-      const listItem = document.createElement('li');
-      listItem.textContent = detail;
-      descriptionList.appendChild(listItem);
-    });
-    productDescriptionElement.appendChild(descriptionList);
-
-    // Set product image
-    productImageElement.src = productData.img_url;
-    productImageElement.alt = productData.title;
-  } catch (error) {
-    console.error('Error fetching and displaying product data:', error);
-  }
-}
-
-// Call the function when the page loads
-window.addEventListener('load', fetchAndDisplayProductData);
+    // Call the function when the page loads
+    window.addEventListener('load', fetchAndDisplayProductData);
 
   </script>
 </body>

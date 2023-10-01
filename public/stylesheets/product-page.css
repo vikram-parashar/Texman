@@ -29,7 +29,7 @@ body {
   margin-top: 12%;
   font-size: 200%;
   font-size: 200%;
-  height: 20%;
+  height: fit-content;
   line-height: 40px;
   font-size: 40px;
   margin-bottom: 25px;
@@ -169,49 +169,11 @@ body {
     opacity: 1;
   }
 }
-/* Style the tab */
-.tab {
-  margin-top: 5%;
-  font-size: 150%;
-  overflow: hidden;
-  border: none;
-  background: none;
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
 
-/* Style the buttons that are used to open the tab content */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  border-bottom: solid 2px var(--foreground);
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  border-bottom: solid 2px var(--foreground);
-  margin-bottom: 2px;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border-top: none;
-}
 @media only screen and (max-width: 768px) and (min-width: 480px){
   .outer-container{
     flex-direction: column-reverse;
-    height: 250vh;
+    height: 300vh;
     margin: 0%;
     padding: 0%;
   }
@@ -220,7 +182,7 @@ body {
   }
   .product-name{
     position: relative;
-    bottom: 200px;
+    bottom: 60px;
     z-index: 100;
     overflow: visible;
     padding-right: 50px;
@@ -234,7 +196,15 @@ body {
   }
   .img-background{
     position: relative;
-    top: 4px;
-    transform: skew(40.5deg);
+    top: -6px;
+    transform: skew(25deg);
+  }
+}
+@media only screen and (max-width: 480px){
+
+  .img-background{
+    position: relative;
+    top: -6px;
+    transform: skew(55deg);
   }
 }
