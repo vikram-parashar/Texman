@@ -70,7 +70,7 @@
   <main>
     <div class="outer-container">
       <div class="product info">
-        <h1 class="product-name">Texman Gaming</h1>
+        <p class="product-name">Texman Gaming</p>
         <p>Brand Name</p>
         <p>Number of reviews</p>
         <!-- Tab links -->
@@ -191,11 +191,53 @@
   <!-- Back to Top -->
   <button id="back-to-top" class="nf nf-fa-chevron_up btn-darken" onclick="backToTop()"></button>
 
-  <script src="/jquery/jquery.js"></script>
-  <script src="/scripts/global.js"></script>
-  <script src="/reload/reload.js"></script>
+  <script>
+    // Function to fetch and display product data
+async function fetchAndDisplayProductData() {
+  try {
+    const response = await fetch('/data');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const productData = await response.json();
 
-  <script src="/scripts/product-page.js" async defer></script>
+    // Get elements to populate with data
+    const productNameElement = document.querySelector('.product-name');
+    const productBrandElement = document.querySelector('.product-brand');
+    const productReviewsElement = document.querySelector('.product-reviews');
+    const productPriceElement = document.querySelector('.product-price');
+    const productRatingElement = document.querySelector('.product-rating');
+    const productDescriptionElement = document.querySelector('.product-description');
+    const productImageElement = document.querySelector('.product-image');
+
+    // Populate HTML elements with data
+    productNameElement.textContent = productData.title;
+    productBrandElement.textContent = `Brand: ${productData.features.Brand}`;
+    productReviewsElement.textContent = `Reviews: ${productData.review_count}`;
+    productPriceElement.textContent = `Price: ${productData.price}`;
+    productRatingElement.textContent = `Rating: ${productData.rating}`;
+    
+    // Populate product description
+    const descriptionList = document.createElement('ul');
+    productData.details.forEach((detail) => {
+      const listItem = document.createElement('li');
+      listItem.textContent = detail;
+      descriptionList.appendChild(listItem);
+    });
+    productDescriptionElement.appendChild(descriptionList);
+
+    // Set product image
+    productImageElement.src = productData.img_url;
+    productImageElement.alt = productData.title;
+  } catch (error) {
+    console.error('Error fetching and displaying product data:', error);
+  }
+}
+
+// Call the function when the page loads
+window.addEventListener('load', fetchAndDisplayProductData);
+
+  </script>
 </body>
 
 </html>

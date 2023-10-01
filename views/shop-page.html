@@ -24,8 +24,8 @@
           <div class="nav-links">
             <a href="/">Home</a>
             <a class="category-dropdown"
-              >Categrories <i class="nf nf-oct-chevron_down"></i
-            ></a>
+              >Categories <i class="nf nf-oct-chevron_down"></i>
+            </a>
             <a>Linking Link</a>
           </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="pop-nav-links">
           <a href="/">Home</a>
           <a class="category-dropdown"
-            >Categrories <i class="nf nf-oct-chevron_down"></i
+            >Categories <i class="nf nf-oct-chevron_down"></i
           ></a>
           <div class="pop-sub-links">
             <a href="/shop?category=headphones">Headphones</a>
@@ -104,7 +104,7 @@
       onclick="backToTop()"
     ></button>
 
-    <script>
+<script>
       
 async function fetchData() {
     try {
@@ -143,7 +143,7 @@ function displayProductGrid(data) {
         priceElement.textContent = `Price: ${product.price}`; 
 
         const buyLinkElement = document.createElement('a');
-        buyLinkElement.href = '#';
+        buyLinkElement.href = "/product/"+product._id;
         buyLinkElement.classList.add('buy');
         buyLinkElement.textContent = 'Buy Now';
 
