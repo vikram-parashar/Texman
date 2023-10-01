@@ -31,7 +31,7 @@ body {
   transform: skewY(390deg);
 }
 #product-grid .item::after {
-  content: "BRANDED NAME";
+  /* content: "BRANDED NAME"; */
   position: absolute;
   bottom: 25px;
   left: 10px;

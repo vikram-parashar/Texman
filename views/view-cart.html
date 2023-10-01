@@ -182,11 +182,58 @@
   <!-- Back to Top -->
   <button id="back-to-top" class="nf nf-fa-chevron_up btn-darken" onclick="backToTop()"></button>
 
-  <script src="/jquery/jquery.js"></script>
-  <script src="/scripts/global.js"></script>
-  <script src="/reload/reload.js"></script>
+  
+  <script>
+    // Function to fetch data from the /data route
+    async function fetchData() {
+      try {
+        const response = await fetch('/data');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
 
-  <script src="/scripts/product-page.js" async defer></script>
+        // Modify this part to display the data as needed
+        const productContainer = document.querySelector('.product-card-container');
+        productContainer.innerHTML = ''; // Clear previous content
+
+        data.forEach((product) => {
+          const productCard = document.createElement('div');
+          productCard.classList.add('product-card');
+
+          const img = document.createElement('img');
+          img.src = product.img_url;
+          img.alt = 'product-image';
+
+          const textSection = document.createElement('div');
+          textSection.classList.add('text-section');
+
+          const centerSection = document.createElement('div');
+          centerSection.classList.add('center-section');
+
+          const h2 = document.createElement('h2');
+          h2.textContent = product.title;
+
+          const price = document.createElement('p');
+          price.classList.add('price');
+          price.textContent = product.price;
+
+          // Add elements to the product card
+          centerSection.appendChild(h2);
+          centerSection.appendChild(price);
+          textSection.appendChild(centerSection);
+          productCard.appendChild(img);
+          productCard.appendChild(textSection);
+          productContainer.appendChild(productCard);
+        });
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    // Call the fetchData function when the page loads
+    window.addEventListener('load', fetchData);
+  </script>
 </body>
 
 </html>

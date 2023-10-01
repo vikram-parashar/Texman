@@ -3,9 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Cart</title>
+    <title>Product Details</title>
 </head>
 <body>
-    Cart of User
+    <div id="productDetails">
+        <!-- Data will be displayed here -->
+    </div>
+
+    <script>
+        // Function to fetch data from the /data route
+      async function fetchData() {
+          try {
+              const response = await fetch('/data'); 
+              console.log(response+ "rsdgre")// Replace with your actual route URL
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              const data = await response.json();
+      
+              // Call a function to display the data
+              displayData(data);
+          } catch (error) {
+              console.error('Error fetching data:', error);
+          }
+      }
+      
+      // Function to display the data on the HTML page
+      function displayData(data) {
+          const productDetailsContainer = document.getElementById('productDetails');
+      
+          // Loop through the data and create HTML elements to display it
+          data.forEach((product) => {
+              const productDiv = document.createElement('div');
+              productDiv.classList.add('product');
+      
+              // Create and populate HTML elements with product data
+              const titleElement = document.createElement('h2');
+              titleElement.textContent = product.title;
+      
+              const imgElement = document.createElement('img');
+              imgElement.src = product.img_url;
+              imgElement.alt = product.title;
+      
+              const ratingElement = document.createElement('p');
+              ratingElement.textContent = `Rating: ${product.rating}`;
+      
+              const reviewCountElement = document.createElement('p');
+              reviewCountElement.textContent = `Reviews: ${product.review_count}`;
+      
+              // Append elements to the productDiv
+              productDiv.appendChild(titleElement);
+              productDiv.appendChild(imgElement);
+              productDiv.appendChild(ratingElement);
+              productDiv.appendChild(reviewCountElement);
+      
+              // Append the productDiv to the container
+              productDetailsContainer.appendChild(productDiv);
+          });
+      }
+      
+      // Fetch and display the data when the page loads
+     // Fetch and display the data when the page loads
+    window.addEventListener('load', () => {
+        console.log('Fetching data...');
+        fetchData();
+    });
+
+      </script>
+
 </body>
 </html>
+
+    

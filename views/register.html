@@ -38,6 +38,9 @@
                         <span>Sign In</span>
                     </button>
                 </form>
+                <div id="message-container">
+                    sdfg
+                </div>
                 <div class="social-login">
                     <div>
                         <p>log in via</p>
@@ -62,9 +65,43 @@
 <div>
     
 </div>
+
     <!-- <script src="/scripts/global.js"></script>
   <script src="/reload/reload.js"></script> -->
-    <script src="/productApi.js"></script>
+    <!-- <script src="/productApi.js"></script> -->
+
+    <script>
+        // Function to fetch data from the /data route
+async function fetchData() {
+    try {
+        const response = await fetch('/data');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const message = await response.json();
+        
+        // Call a function to display the message
+        displayMessage(message);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+// Function to display the message on the HTML page
+function displayMessage(message) {
+    const messageContainer = document.getElementById('messageContainer');
+    
+    // Update the innerHTML of the messageContainer with the received message
+    messageContainer.innerHTML = message;
+}
+
+// Fetch and display the data when the page loads
+window.addEventListener('load', () => {
+    fetchData();
+});
+
+    </script>
+    
 </body>
 
 </html>

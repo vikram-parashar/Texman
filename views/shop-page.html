@@ -79,19 +79,15 @@
       <h1 id="category-heading">Category Heading</h1>
       <div id="product-grid">
        
-          <div class="item">
-            <img src="" alt="Cat">
-            
-            <img src="" +alt="Cat">
+          <!-- <div class="item">
+
             <div class="contentBox">
               <h3></h3>
               <h2 class="price"></h2>
               <h2 class="price"></h2>
-              <a href="#" class="buy">Buy Now</a>
+              <a href="" class="buy">Buy Now</a>
             </div>
-          </div>
-        <%});%>
-        
+          </div> -->
         
       </div>
       <hr />
@@ -108,10 +104,67 @@
       onclick="backToTop()"
     ></button>
 
-    <script src="/jquery/jquery.js"></script>
-    <script src="/scripts/shop-page.js"></script>
-    <script src="/scripts/global.js"></script>
-    <script src="/reload/reload.js"></script>
+    <script>
+      
+async function fetchData() {
+    try {
+        const response = await fetch('/data');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+
+        // Call a function to display the product grid
+        displayProductGrid(data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+
+function displayProductGrid(data) {
+    const productGrid = document.getElementById('product-grid');
+
+   
+    data.forEach((product) => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('item');
+
+        
+        const imgElement = document.createElement('img');
+        imgElement.src = product.img_url;
+        imgElement.alt = product.title;
+
+        const titleElement = document.createElement('h3');
+        titleElement.textContent = product.title;
+
+        const priceElement = document.createElement('h2');
+        priceElement.classList.add('price');
+        priceElement.textContent = `Price: ${product.price}`; 
+
+        const buyLinkElement = document.createElement('a');
+        buyLinkElement.href = '#';
+        buyLinkElement.classList.add('buy');
+        buyLinkElement.textContent = 'Buy Now';
+
+        
+        productDiv.appendChild(imgElement);
+        productDiv.appendChild(titleElement);
+        productDiv.appendChild(priceElement);
+        productDiv.appendChild(buyLinkElement);
+
+        
+        productGrid.appendChild(productDiv);
+    });
+}
+
+
+window.addEventListener('load', () => {
+    fetchData();
+});
+
+    </script>
+    
   </body>
 </html>
 <!-- <div class="item">

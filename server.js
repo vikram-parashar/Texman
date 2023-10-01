@@ -35,7 +35,7 @@ mongoose
 
 const productSchema = new Schema({
   title: String,
-  price: Number,
+  price: String,
   rating: Number,
   reviews: String,
   features: {
@@ -106,13 +106,17 @@ app.get("/", (req, res) => {
 });
 
 app.get('/data', (req, res) => {
+  if (dataFromDatabase) {
     res.json(dataFromDatabase);
+  } else {
+    console.log('dataFromDatabase is empty or undefined');
+    res.json(dataFromDatabase); // You can send an empty JSON object or an appropriate response when dataFromDatabase is empty
+  }   
 });
 
 app.get("/shop/:id", async (req, res) => {
     try{ const category = req.params.id
         const array = await displayItems(category); 
-        console.log(array[0]); //change headphones to any category within database
         dataFromDatabase= array;
         res.sendFile(path.join(__dirname, 'views', 'shop-page.html'));}
         catch(err){
@@ -236,7 +240,7 @@ app.put("/cart/:id", validateToken, async (req, res) => {
     });
     console.log(itemArray);
     dataFromDatabase = itemArray;
-    res.sendFile(path.join(__dirname, 'views', 'cart.html'));
+    res.sendFile(path.join(__dirname, 'views', 'view-cart.html'));
   } catch (error) {
     console.log("error" + error);
   }
@@ -258,7 +262,7 @@ app.delete("/cart/:id", validateToken, async (req, res) => {
     const itemList = await displayCart(userId, Users, carts);
     console.log(itemList);
     dataFromDatabase = itemList;
-    res.sendFile(path.join(__dirname, 'views', 'cart.html'));
+    res.sendFile(path.join(__dirname, 'views', 'view-cart.html'));
   } catch (error) {
     console.log("error" + error);
   }
@@ -271,7 +275,7 @@ app.get("/cart", validateToken, async (req, res) => {
   console.log(itemList);
   dataFromDatabase = itemList;
   console.log(req.user.userName)
-    res.sendFile(path.join(__dirname, 'views', 'cart.html'));
+    res.sendFile(path.join(__dirname, 'views', 'view-cart.html'));
 });
 
 export { productDetails };
