@@ -8,6 +8,25 @@ body {
     black;
 }
 
+.del-btn{
+  text-align: center;
+  color: var(--bg-gradient);
+  background-color: var(--foreground);
+  height: 20px;
+  margin-top: 15%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-bottom: 3%;
+  padding-top: 1%;
+  border-radius: 25px;
+  border: solid var(--foreground) 1px;
+  
+}
+.del-btn:hover{
+  color: var(--foreground);
+  background:none;
+  border: solid var(--foreground) 1px;
+}
 main {
   padding: 2em 0 0 0;
   display: flex;

@@ -88,10 +88,11 @@ async function productDetails(productId) {
     "laptops",
     "mice",
     "monitors",
+    "coolingpad"
   ];
   const id1 = new mongoose.Types.ObjectId(productId);
   var item;
-  for (let index = 0; index < 6; index++) {
+  for (let index = 0; index < 7; index++) {
     var search = model(models[index], productSchema);
     item = await search.findById(id1);
     if (item) {

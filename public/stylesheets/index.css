@@ -125,21 +125,33 @@ body {
   background-size: cover;
 }
 #category-section .item-1 {
+  background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20230703/pngtree-neon-lit-close-up-of-headphones-on-black-background-rendered-in-image_3766830.jpg");
+  background-size: contain;
   grid-area: a;
 }
 #category-section .item-2 {
+  background-image: url("https://img.freepik.com/premium-photo/close-up-gaming-chair-with-neon-light-it-generative-ai_958138-3361.jpg");
+  background-size: cover;
   grid-area: b;
 }
 #category-section .item-3 {
+  background-image: url("https://i.etsystatic.com/5811639/r/il/c96a70/4585545266/il_fullxfull.4585545266_te34.jpg");
+  background-size: contain;
   grid-area: c;
 }
 #category-section .item-4 {
+  background-image: url("https://cdn.autonomous.ai/static/upload/images/common/upload/20220315/Things-You-Need-to-Set-Up-a-Neon-Gaming-Room_2201faa8029.jpg");
+  background-size: contain;
   grid-area: d;
 }
 #category-section .item-5 {
+  background-image: url("https://antesports.com/wp-content/uploads/2023/04/NC280_3.jpg?x41650");
+  background-size: contain;
   grid-area: e;
 }
 #category-section .item-6 {
+  background-image: url("https://static-01.daraz.pk/p/27df58b43652f791404bce71145314ff.jpg");
+  background-size: contain;
   grid-area: f;
 }
 
