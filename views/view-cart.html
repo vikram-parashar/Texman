@@ -28,7 +28,6 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a class="category-dropdown">Categrories <i class="nf nf-oct-chevron_down"></i></a>
-          <a>Linking Link</a>
         </div>
       </div>
 
@@ -41,11 +40,11 @@
 
     <div class="sub-links">
       <a href="/shop/headphone">Headphones</a>
-      <a href="/shop/monitors">Monitors</a>
-      <a href="/shop/chairs">Chairs</a>
-      <a href="/shop/controllers">Controllers</a>
-      <a href="/shop/cooling-pads">Cooling Pads</a>
-      <a href="/shop/mouses">Mouses</a>
+      <a href="/shop/monitor">Monitors</a>
+      <a href="/shop/chair">Chairs</a>
+      <a href="/shop/controller">Controllers</a>
+      <a href="/shop/coolingpad">Cooling Pads</a>
+      <a href="/shop/mouse">Mice</a>
     </div>
 
     <div class="pop-part">
@@ -64,7 +63,6 @@
           <a href="/shop/cooling-pads">Cooling Pads</a>
           <a href="/shop/mouses">Mouses</a>
         </div>
-        <a>Linking Link</a>
       </div>
     </div>
   </div>
@@ -123,8 +121,8 @@
     <div class="summary-container">
       <div class="summary">
         <div class="subtotal">
-          <p class="text-gray-700">Subtotal</p>
-          <p class="text-gray-700">$129.99</p>
+          <p class="text-gray-700" >Subtotal</p>
+          <p class="text-gray-700" id="sub-total-value">$129.99</p>
         </div>
         <div class="shipping">
           <p class="text-gray-700">Shipping</p>
@@ -182,8 +180,8 @@
         <div class="social-links">
           <a href="#"><i class="nf nf-fa-facebook_official"></i></a>
           <a href="#"><i class="nf nf-fa-twitter"></i></a>
-          <a href="#"><i class="nf nf-md-instagram"></i></a>
-          <a href="#"><i class="nf nf-md-linkedin"></i></a>
+          <a href="https://www.instagram.com/sigm_a_stik/"><i class="nf nf-md-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/atharvan-pohnerkar-631740256/"><i class="nf nf-md-linkedin"></i></a>
         </div>
       </div>
     </div>
@@ -191,11 +189,11 @@
   <!-- Back to Top -->
   <button id="back-to-top" class="nf nf-fa-chevron_up btn-darken" onclick="backToTop()"></button>
 
-
+  <script src="/jquery/jquery.js"></script>
+  <script src="/scripts/global.js"></script>
   <script>
     // Function to fetch data from the /data route
-    let total = 0;
-    const totalValueElement = document.getElementById('total-value');
+
 
     async function fetchData() {
       try {
@@ -231,9 +229,7 @@
           price.style.fontSize = '20px';
           price.textContent = product.price;
           const productPrice = parseFloat(product.price); // Parse price as a float
-          total += productPrice;
-          
-          console.log(total)
+
           const del = document.createElement('button')
           del.classList.add('del-btn')
           del.textContent = 'Delete'
@@ -272,8 +268,19 @@
           productCard.appendChild(textSection);
           productContainer.appendChild(productCard);
           productCard.appendChild(del)
-          totalValueElement.innerText = `${total.toFixed(2)} INR`;
+
         });
+        
+        // get item prices
+        product_prices = $('.price')
+        let total=0
+        for(let index=0;index<product_prices.length;index++){
+          stringIs=product_prices[index].innerHTML
+          stringIs=stringIs.replace(',','').replace('₹','').replace(' ','')
+          total+=Number(stringIs)
+        }
+        $('#sub-total-value').text(`₹ ${total}`)
+        $('#total-value').text(`₹ ${total+100}`)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -282,7 +289,9 @@
     // Call the fetchData function when the page loads
     window.addEventListener('load', fetchData);
 
+
   </script>
+
 </body>
 
 </html>

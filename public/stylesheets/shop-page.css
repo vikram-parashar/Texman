@@ -43,9 +43,12 @@ body {
 #product-grid .item img {
   position: relative;
   width: 90%;
-  margin: 0 auto;
+  margin: 5px auto;
   z-index: 1;
+  aspect-ratio: 1.1;
+  object-fit: contain;
 }
+
 #product-grid .item .contentBox {
   position: relative;
   display: flex;
