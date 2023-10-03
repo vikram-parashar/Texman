@@ -111,7 +111,7 @@ app.get('/data', (req, res) => {
     res.json(dataFromDatabase);
   } else {
     console.log('dataFromDatabase is empty or undefined');
-    res.json(dataFromDatabase); // You can send an empty JSON object or an appropriate response when dataFromDatabase is empty
+    res.json(null); // You can send an empty JSON object or an appropriate response when dataFromDatabase is empty
   }   
 });
 
@@ -129,7 +129,7 @@ app.get("/product/:id", async (req, res) => {
   const id = req.params.id;
   console.log(id);
   const product = await productDetails(id);
-  console.log(product);
+  
   dataFromDatabase= product;
     res.sendFile(path.join(__dirname, 'views', 'product-page.html'));
   
@@ -211,6 +211,7 @@ app.post("/login", async (req, res) => {
          res.sendFile(path.join(__dirname, 'views', 'login.html'));
         }
       });
+      
     } else {
         dataFromDatabase ="User not found Plz sign up" ;
       res.sendFile(path.join(__dirname, 'views', 'login.html'));

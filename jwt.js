@@ -36,7 +36,7 @@ async function displayCart(userId,Users,carts){
     const id = new mongoose.Types.ObjectId(userId);
     const user = await Users.findById(id);
     const items = await carts.find({userName:user.userName});
-    console.log(items[0].productArray.length)
+    
     for (const item of items[0].productArray) {
         const cartitem = await productDetails(String(item));
         
