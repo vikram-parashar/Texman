@@ -1,12 +1,3 @@
-body {
-  background: radial-gradient(
-      circle at 80vw 50%,
-      var(--bg-gradient),
-      #0c0c0c,
-      transparent 45vw
-    ),
-    black;
-}
 #background {
   top: 0;
 }

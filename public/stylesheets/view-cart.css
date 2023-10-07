@@ -1,14 +1,4 @@
-body {
-  background: radial-gradient(
-      circle at 90vw 50%,
-      var(--bg-gradient),
-      #0c0c0c,
-      transparent 45vw
-    ),
-    black;
-}
-
-.del-btn{
+.del-btn {
   text-align: center;
   color: var(--bg-gradient);
   background-color: var(--foreground);
@@ -20,11 +10,10 @@ body {
   padding-top: 1%;
   border-radius: 25px;
   border: solid var(--foreground) 1px;
-  
 }
-.del-btn:hover{
+.del-btn:hover {
   color: var(--foreground);
-  background:none;
+  background: none;
   border: solid var(--foreground) 1px;
 }
 main {
